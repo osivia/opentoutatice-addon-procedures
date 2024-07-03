@@ -1,6 +1,7 @@
 package org.osivia.procedures.instances.operations;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -144,7 +145,11 @@ public class StartProcedureUnrestrictedSessionRunner extends AbstractProcedureUn
         }
 
         // Create procedure instance model
-        DocumentModel procedureInstanceModel = session.createDocumentModel(parentPath, model.getName(), "ProcedureInstance");
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String instanceName = model.getName().concat(".").concat(timestamp.toString());
+
+        DocumentModel procedureInstanceModel = session.createDocumentModel(parentPath, instanceName, "ProcedureInstance");
 		
         // Create procedure instance based on model
         DocumentModel procedureInstance = session.createDocument(procedureInstanceModel);

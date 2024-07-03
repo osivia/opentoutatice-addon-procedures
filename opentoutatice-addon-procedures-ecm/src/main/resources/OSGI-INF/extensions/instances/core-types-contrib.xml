@@ -21,7 +21,6 @@
 		point="doctype">
 		<doctype name="ProceduresInstancesContainer" extends="Document">
 			<facet name="Folderish" />
-			<facet name="Orderable" />
 			<schema name="dublincore" />
 		</doctype>
 		
